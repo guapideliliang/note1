@@ -537,69 +537,70 @@ using namespace std;
 
 //继承中的对象模型
 //父类对象先创建，并且后消失
-class P {
-public:
+//class P {
+//public:
+//
+//	P() {
+//		m_a = 10;
+//		cout << "P的构造函数" << endl;
+//	}
+//	~P() {
+//		cout << "P的析构函数" << endl;
+//	}
+//	void func() {
+//		cout << "父类" << endl;
+//	}
+//	void func(int a) {
+//		cout << "父类的重载" << endl;
+//	}
+//	int m_a;
+//protected:
+//	int m_b;
+//private:
+//	int m_c;
+//
+//};
+//
+//class P1 : public P {
+//public:
+//	P1() {
+//		m_a = 200;
+//		cout << "P1的构造函数" << endl;
+//	}
+//	void func() {
+//		cout << "子类" << endl;
+//	}
+//	
+//	~P1() {
+//		cout << "P1的析构函数" << endl;
+//	}
+//	int m_d;
+//	int m_a;
+//
+//};
+//
+//void test1() {
+//
+//	cout << "P1的大小为：" << sizeof(P1) << endl;//父类中所有属性(除了静态成员)都被继承了，只是私有权限的属性，不能访问而已，但是被继承了，占用了空间
+//}
+//
+//void test2() {
+//	P1 p;
+//	cout << p.m_a << p.P::m_a << endl;//同名成员，父类访问要加作用域
+//	p.func();
+//	//p.func(100);//不能把子类和父类中的同名，参数不同的函数视为相互重载。还是得加上作用域
+//	p.P::func(100);
+//	p.P::func();//调用同名函数和访问同名属性一样要加作用域
+//
+//
+//	
+//}
+//int main()
+//{
+//	test1();
+//	P1 p1;
+//	system("pause");
+//	return
+//		0;
+//}
 
-	P() {
-		m_a = 10;
-		cout << "P的构造函数" << endl;
-	}
-	~P() {
-		cout << "P的析构函数" << endl;
-	}
-	void func() {
-		cout << "父类" << endl;
-	}
-	void func(int a) {
-		cout << "父类的重载" << endl;
-	}
-	int m_a;
-protected:
-	int m_b;
-private:
-	int m_c;
-
-};
-
-class P1 : public P {
-public:
-	P1() {
-		m_a = 200;
-		cout << "P1的构造函数" << endl;
-	}
-	void func() {
-		cout << "子类" << endl;
-	}
-	
-	~P1() {
-		cout << "P1的析构函数" << endl;
-	}
-	int m_d;
-	int m_a;
-
-};
-
-void test1() {
-
-	cout << "P1的大小为：" << sizeof(P1) << endl;//父类中所有属性(除了静态成员)都被继承了，只是私有权限的属性，不能访问而已，但是被继承了，占用了空间
-}
-
-void test2() {
-	P1 p;
-	cout << p.m_a << p.P::m_a << endl;//同名成员，父类访问要加作用域
-	p.func();
-	//p.func(100);//不能把子类和父类中的同名，参数不同的函数视为相互重载。还是得加上作用域
-	p.P::func(100);
-	p.P::func();//调用同名函数和访问同名属性一样要加作用域
-
-
-	
-}
-int main()
-{
-	test1();
-	P1 p1;
-	system("pause");
-	return
-		0;
-}
