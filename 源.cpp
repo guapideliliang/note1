@@ -812,3 +812,109 @@ using namespace std;
 //
 //		return 0;
 //}
+
+////纯虚函数和抽象类  纯虚函数语法 virtual 返回值类型 函数名 (参数列表) 
+////当类中有了纯虚函数，被称为抽象类，特点：无法实例化对象。子类必须重写纯虚函数，不然也是抽象类
+//
+//class makeDrinks {
+//
+//public:
+//	virtual void boilWater() = 0;
+//	virtual void Brew() = 0;
+//	virtual void addToCup() = 0;
+//	virtual void addIngredients() = 0;
+//};
+//
+//class Coffee :public makeDrinks {
+//	void boilWater() {
+//		cout << "煮水" << endl;
+//	}
+//	virtual void Brew() {
+//		cout << "冲泡咖啡" << endl;
+//	}
+//	void addToCup() {
+//		cout << "倒入杯中" << endl;
+//	}
+//	virtual void addIngredients() {
+//		cout << "加糖和牛奶" << endl;
+//	}
+//};
+//
+//class Tea :public makeDrinks {
+//
+//	void boilWater() {
+//		cout << "煮矿泉水" << endl;
+//	}
+//	virtual void Brew() {
+//		cout << "冲泡茶叶" << endl;
+//	}
+//	void addToCup() {
+//		cout << "倒入盆中" << endl;
+//	}
+//	virtual void addIngredients() {
+//		cout << "加柠檬" << endl;
+//	}
+//
+//};
+//void test(makeDrinks*a) {
+//	a->boilWater();
+//	a->Brew();
+//	a->addToCup();
+//	a->addIngredients();
+//	delete a;
+//}
+//void t() {
+//	test(new Coffee);
+//	test(new Tea);
+//}
+//
+//int main() {
+//	t();
+//		system("pause");
+//	return 0;
+//}
+
+////虚析构和纯虚析构
+//class Animal {
+//public:
+//	Animal() {
+//		cout << "Animal构造函数" << endl;
+//	}
+//	/*virtual ~Animal()//纯虚析构需要声明也需要实现，有了纯虚析构这个类也属于抽象类了
+//	{
+//		cout << "Animal虚析构函数" << endl;
+//	}*/
+//	virtual ~Animal() = 0;
+//};
+//Animal::~Animal() {//纯虚析构函数必须有内容，只能在类外实现，没有内容纯虚析构会报错
+//	cout << "纯虚析构函数" << endl;
+//}
+//
+//class Cat :public Animal {
+//public:
+//	Cat() {
+//		cout << "Cat构造函数" << endl;
+//		m_A = new int(10);
+//	}
+//	~Cat()
+//	{
+//		delete m_A;
+//		cout << "Cat析构函数" << endl;
+//	}
+//	int*m_A;
+//
+//};
+//
+//void t() {
+//	Animal* a = new Cat;
+//	//父类指针在析构的时候不会调用子类的虚构函数，导致，子类申请的堆区内存不能释放，导致内存泄露
+//	//解决办法，将父类的析构函数变成虚析构函数，在函数名前面加virtual
+//	delete a;
+//}
+//
+//int main() {
+//	t();
+//
+//	system("pause");
+//	return 0;
+//}
