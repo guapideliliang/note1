@@ -918,3 +918,134 @@ using namespace std;
 //	system("pause");
 //	return 0;
 //}
+
+//文件操作
+#include<fstream>
+//包含头文件<fstream>
+//
+//文件类型分为两种
+//文本文件 : 文件以文本的ascall码形式存储在计算机中
+//二进制文件：文件以文本的二进制形式存储在计算机中，用户一般不能直接读懂他们
+//
+//
+//操作文件的三大类：
+//1.ofstream：写操作 o指的是out，对于编程软件来说，向文件写内容，就是输出的过程，所以是out
+//2.ifstream：读操作 i指的是in，对于编程软件来说，从文件中读取内容，就是从文件向编程软件输入内容的过程，所以是in
+//3.fstream：读写操作。包含上面两种功能
+//
+//写文件步骤：
+//1.包含头文件
+//2.创建流对象
+//ofstream ofs；
+//3.打开文件
+//ofs open（"文件路径"，打开方式）
+//如果找不到文件，会在当前目录下创建文件。
+//打开方式：
+//ios::in   为读文件而打开文件
+//ios::out   为写文件而打开文件
+//ios::ate   初始位置：文件尾
+//ios::app    追加方式写文件
+//ios::trunc  如果文件存在先删除，再创建
+//ios::binary  二进制方式
+//4.写数据
+//ofs << "写入的数据";
+//5.关闭文件
+//ofs.close()
+//
+//
+//读文件步骤：
+//1.2.5步和写文件一样
+//3.打开文件并判断文件是否打开成功
+//ifs.open("文件路径",打开方式 );
+//4.读数据
+//四种方式读取
+#include<string>
+
+//void t() {
+//	ofstream ofs;
+//	ofs.open("test.txt", ios::out);
+//	ofs << "快乐捞徐"<<endl;
+//	ofs << "快乐捞峰"<<endl;
+//	ofs << "快乐小学生"<<endl;
+//	ofs.close();
+//
+//}
+//void t1() {
+//	ifstream ifs;
+//	ifs.open("test.txt", ios::in);
+//	if (!ifs.is_open())//判断文件是否打开成功，打开成功返回true
+//	{
+//		cout<<"文件打开失败" << endl;
+//		return;
+//	}
+//	//四种读取方式
+//	//1.
+//	/*char a[1024] = { 0 };
+//	while (ifs >> a)
+//	{
+//		cout << a << endl;
+//	}*/
+//	//2.
+//	/*char a[1024] = { 0 };
+//	while (ifs.getline(a,sizeof(a)))
+//	{
+//		cout << a << endl;
+//	}*/
+//	//3.
+//	string a;
+//	while (getline(ifs, a))
+//	{
+//		cout << a << endl;
+//	}
+//	//4.不太推荐用，一个一个字符读,效率低
+//	//char c;
+//	//while ((c = ifs.get()) != EOF)//EOF =end of file  是文件尾的标识
+//	//{
+//	//	cout << c;
+//	//}
+//
+//}
+//int main() {
+//	//t();
+//	t1();
+//	system("pause");
+//	return 0;
+//}
+
+////二进制文件。最好用char，不要用string，会出现错误。底层是c语言写的
+//class Person {
+//public:
+//	char m_Name[64];
+//	int m_Age;
+//
+//};
+////写文件
+//void t() {
+//	ofstream ofs("person.txt", ios::out | ios::binary);
+//	Person p = { "捞徐",18};
+//	ofs.write((const char*)&p, sizeof(Person));
+//
+//	ofs.close();
+//
+//}
+////读文件
+//void t1() {
+//	ifstream ifs("person.txt", ios::in | ios::binary);
+//	
+//	if (!ifs.is_open())
+//	{
+//		cout << "文件打开失败" << endl;
+//		return;
+//	}
+//	Person p;
+//
+//	ifs.read((char*)& p, sizeof(Person));
+//	cout << "姓名：" << p.m_Name << "年龄：" << p.m_Age << endl;
+//	ifs.close();
+//}
+//int main() {
+//	//t();
+//	t1();
+//	system("pause");
+//	return 0;
+//}
