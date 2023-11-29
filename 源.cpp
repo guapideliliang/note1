@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+
 #include<iostream>
 using namespace std;
 
@@ -1420,41 +1420,91 @@ using namespace std;
 
 //迭代器：容器与算法之间的粘合剂。常用的是双向迭代器和随机访问迭代器
 
+//遍历方法
 
-#include <vector>
-#include<algorithm>
-void p(int val) {
-	cout<<val<<endl;
-}
-void test()
-{
-	vector<int> v;//创建vector容器
-	//向容器中插入数据
-	v.push_back(10);
-	v.push_back(20);
-	v.push_back(30);
-	////通过迭代器访问容器中的元素
-	//vector<int>::iterator itBegin = v.begin();//起始迭代器
-	//vector<int>::iterator itEnd = v.end();//结束迭代器
-	////第一种遍历方式
-	//while (itBegin!=itEnd)
-	//{
-	//	cout << *itBegin << endl;
-	//	itBegin++;
-	//}
-	//第二种遍历方式
-	for (vector<int>::iterator itBegin = v.begin() ;  itBegin!= v.end(); itBegin++)
-	{
-		cout << *itBegin << endl;
-	}
-	//第三种遍历方式
-	for_each(v.begin(), v.end(),p);
-}
+//#include <vector>
+//#include<algorithm>
+//void p(int val) {
+//	cout<<val<<endl;
+//}
+//void test()
+//{
+//	vector<int> v;//创建vector容器
+//	//向容器中插入数据
+//	v.push_back(10);
+//	v.push_back(20);
+//	v.push_back(30);
+//	////通过迭代器访问容器中的元素
+//	//vector<int>::iterator itBegin = v.begin();//起始迭代器
+//	//vector<int>::iterator itEnd = v.end();//结束迭代器
+//	////第一种遍历方式
+//	//while (itBegin!=itEnd)
+//	//{
+//	//	cout << *itBegin << endl;
+//	//	itBegin++;
+//	//}
+//	//第二种遍历方式
+//	for (vector<int>::iterator itBegin = v.begin() ;  itBegin!= v.end(); itBegin++)
+//	{
+//		cout << *itBegin << endl;
+//	}
+//	//第三种遍历方式
+//	for_each(v.begin(), v.end(),p);
+//}
+//
+//int main()
+//{
+//	test();
+//
+//	return 0;
+//
+//}
+// 
 
-int main()
-{
-	test();
+//vector容器嵌套容器
 
-	return 0;
+//#include<vector>
+//#include<algorithm>
+//
+//void test()
+//{
+//	vector<vector<int>> v;
+//	vector<int>v1;
+//	vector<int>v2;
+//	vector<int>v3;
+//	vector<int>v4;
+//
+//	for (size_t i = 0; i <4; i++)
+//	{
+//		v1.push_back(i + 1);
+//		v2.push_back(i + 2);
+//		v3.push_back(i + 3);
+//		v4.push_back(i + 4);
+//	}
+//	v.push_back(v1);
+//	v.push_back(v2); 
+//	v.push_back(v3);
+//	v.push_back(v4);
+//	for (vector< vector<int>>::iterator it=v.begin();  it!= v.end(); it++)
+//	{
+//		for (vector<int>::iterator its = (*it).begin(); its != (*it).end(); its++)
+//		{
+//			cout<<*its<<" ";
+//		}
+//		cout << endl;
+//	}
+//
+//}
+//
+//int main()
+//{
+//	test();
+//
+//	system("pause");
+//	return 0;
+//}
 
-}
+//string基本概念
+//本质上是一个类，和char*的区别，char*是指针，string是一个类，类内封装了char*，管理这个字符串，是一个char*型的容器
+//封装了很多方便的方法
+
