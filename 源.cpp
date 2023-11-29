@@ -2,48 +2,56 @@
 #include<iostream>
 using namespace std;
 
-//class p {
+//浅拷贝是指简单地复制对象的数据成员的值，包括指针类型的成员变量。这意味着新对象和原始对象将共享相同的内存地址，当一个对象修改了共享的资源时，另一个对象也会受到影响。这可能会导致潜在的错误和不可预测的行为。比如重复释放内存，由于共享内存，每个对象调用了析构函数一次
+//深拷贝是指创建一个新的对象，并复制原始对象的所有数据成员的值，包括指针类型的成员变量。对于指针类型的成员变量，深拷贝将会分配新的内存空间，并将原始对象指针所指向的内容复制到新的内存空间中。这样，新对象和原始对象就拥有独立的内存空间，修改一个对象不会影响到另一个对象
+//class MyClass {
 //public:
-//	int* m_age;//在堆区开辟空间
-//	p() {
-//		cout << "构造函数" << endl;
-//	}
-//	~p()
-//	{
-//		delete m_age;//释放堆空间
-//		cout << "析构函数" << endl;
-//	}
-//	//p(const p& a)
-//	//{
-//	// this.m_age=p.m_age;
-//	//	cout << "浅拷贝构造函数" << endl;
-//	//}
-//	//p(const p& a) {//深拷贝函数
-//	//	
-//	//	this->m_age = new int(*a.m_age);
-//	//}
+//    int* data;
+//
+//    // 构造函数
+//    MyClass(int value) {
+//        data = new int;
+//        *data = value;
+//    }
+//
+//    // 拷贝构造函数 - 浅拷贝
+//    MyClass(const MyClass& other) {
+//        data = other.data;  // 简单地复制指针的值
+//    }
+//
+//    // 深拷贝构造函数 - 深拷贝
+//    MyClass(const MyClass& other) {
+//        data = new int;
+//        *data = *(other.data);  // 复制指针所指向的内容
+//    }
+//
+//    // 析构函数
+//    ~MyClass() {
+//        delete data;  // 释放动态分配的内存
+//    }
 //};
 //
+//int main() {
+//    MyClass obj1(10);
+//    MyClass obj2 = obj1;  // 使用拷贝构造函数进行赋值
 //
-//p t() {
-//	p a;
-//	return a;
-//}
-//void test01() {
-//	p a1 = t();
+//    // 修改 obj1 的数据成员
+//    *(obj1.data) = 20;
 //
-//}
-//int main()
-//{
-//	test01();
+//    // 输出 obj2 的数据成员
+//    std::cout << *(obj2.data) << std::endl;  // 若为浅拷贝，输出结果为 20；若为深拷贝，输出结果为 10
 //
-//	system("pause");
-//	return 0;
+//    return 0;
 //}
+// 在上述示例中，MyClass 类使用了浅拷贝和深拷贝两种方式进行对象复制。若使用浅拷贝，则 obj1 和 obj2 共享相同的内存地址，修改 obj1 的数据会影响到 obj2。而若使用深拷贝，则 obj1 和 obj2 拥有独立的内存空间，修改一个对象不会影响到另一个对象。
+// 
+
+
+
 //class Penson {
 //
 //public:
-//	Penson(int a,int b,int c): ma(a),mb(b),mc(c)
+//	Penson(int a,int b,int c): ma(a),mb(b),mc(c)//构造函数赋值，初始化列表
 //	{
 //
 //	}
@@ -103,7 +111,8 @@ using namespace std;
 //}
 
 
-//*this返回对象的注意事项
+// *this返回对象本身的注意事项
+// this指针指向被调用的成员函数所属的对象
 //class P {
 //public:
 //	int a;
@@ -133,13 +142,13 @@ using namespace std;
 //
 //};
 //
-////void t() {
-////	P a;
-////	a.a = 10;
-////	P b;
-////	b.a = 10;
-////	a.kkk(b).kkk(b);
-////}
+//void t() {
+//	P a;
+//	a.a = 10;
+//	P b;
+//	b.a = 10;
+//	a.kkk(b).kkk(b);
+//}
 //void t1() {
 //	P1 a;
 //	a.a = 10;
@@ -164,6 +173,8 @@ using namespace std;
 //	return 0;
 //}
 
+
+
 //class P//常对象和常函数
 //{
 //public:
@@ -171,7 +182,7 @@ using namespace std;
 //	mutable int m_b;//无视常函数和常对象的限制
 //	//this本质是指针常量，格式为P*const this 指针指向不修改
 //	
-//	void func() const//常函数。相当于常量指针，指向的值不能修改。
+//	void func() const//常函数内不可以修改成员属性。相当于常量指针，指向的值不能修改。
 //	{
 //		//m_a = 10;
 //		m_b = 10;
@@ -185,7 +196,7 @@ using namespace std;
 //	P b;
 //	b.fun();
 //	b.func();
-//	const P a;//相当于常量指针，只能调用常函数,普通函数可以修改属性，但常对象指向的值不能修改
+//	const P a;//相当于常量指针，只能调用常函数。因为普通函数可以修改属性，但常对象指向的值不能修改，所以不能调用普通函数
 //	a.func();
 //	a.fun();
 //	a.m_a = 10;
@@ -880,7 +891,7 @@ using namespace std;
 //	Animal() {
 //		cout << "Animal构造函数" << endl;
 //	}
-//	/*virtual ~Animal()//纯虚析构需要声明也需要实现，有了纯虚析构这个类也属于抽象类了
+//	/*virtual ~Animal()//纯虚析构需要声明也需要实现，有了纯虚析构这个类也属于抽象类了,强制子类提供自己的虚构函数。
 //	{
 //		cout << "Animal虚析构函数" << endl;
 //	}*/
@@ -908,7 +919,7 @@ using namespace std;
 //void t() {
 //	Animal* a = new Cat;
 //	//父类指针在析构的时候不会调用子类的虚构函数，导致，子类申请的堆区内存不能释放，导致内存泄露
-//	//解决办法，将父类的析构函数变成虚析构函数，在函数名前面加virtual
+//	//解决办法，将父类的析构函数变成虚析构函数，在函数名前面加virtual。变成虚析构后才会调用子类的析构函数。
 //	delete a;
 //}
 //
@@ -1049,3 +1060,401 @@ using namespace std;
 //	system("pause");
 //	return 0;
 //}
+
+
+//模板
+//语法template<typename T>
+//template<typename T>
+//void Swap(T& a, T& b)
+//{
+//	T temp = a;
+//	a = b;
+//	b = temp;
+//}
+//
+//int main() {
+//	int a = 2;
+//	int b = 20;
+//
+//	//自动类型推导
+//	//Swap(a, b);
+//	//显示指定类型
+//	Swap<int>(a, b);
+//	cout << a<<b<< endl;
+//	system("pause");
+//	return 0;
+//}
+//template<class T>
+//void mySwap(T& a, T& b)
+//{
+//	T temp = a;
+//	a = b;
+//	b = temp;
+//}
+//template<class T>
+//void myprint(T arr[], int len)
+//{
+//	for (int i = 0; i < len; i++)
+//	{
+//		cout << arr[i];
+//
+//	}
+//}
+//template<class T>
+//void mySort(T arr[], int len)
+//{
+//	
+//	for (int i = 0; i < len; i++)
+//	{
+//		int max = i;
+//		for (int  j= i+1;   j< len;  j++)
+//		{
+//			
+//			if (arr[max] < arr[j])
+//			{
+//				max = j;
+//			}
+//		}
+//		if (max != i)
+//		{
+//			mySwap(arr[i], arr[max]);
+//		}
+//	}
+//
+//
+//}
+//
+//void test01() {
+//	char array[] = "sefqav";
+//	int num = strlen(array);
+//	cout << num;
+//	mySort(array, num);
+//	myprint(array, num);
+//
+//}
+//void test02()
+//{
+//	int array[6] = { 5, 36, 8, 7, 4, 5 };
+//
+//
+//	mySort(array, 6);
+//	myprint(array, 6);
+//}
+//int main()
+//{
+//
+//	test01();
+//	test02();
+//	return 0;
+//	system("pause");
+//}
+//普通函数和函数模板的区别
+//普通函数可以发生隐式转换 比如需要的参数是int，但传的是char类型，函数也能正常运行，因为ascall码
+//函数模板用自动类型推导不能发生隐式转换，但用显示指定类型可以发生隐式转换
+
+//普通函数和函数模板的调用规则
+//1.如果函数模板和普通函数都可以实现，优先调用普通函数
+//2.可以通过空模板参数列表来强制调用函数模板
+
+//void t(int a, int b) {
+//	cout << "普通函数" << endl;
+//}
+//
+//template<class T>
+//void t(T a, T b) {
+//	
+//	cout << "函数模板" << endl;
+//
+//}
+//int main()
+//{
+//	t(10, 10);
+//	t<>(10, 10);//空模板调用
+//	return 0;
+//
+//	system("pause");
+//}
+//3.函数模板也可以发生函数重载
+//4.如果函数模板可以产生更好的匹配，优先调用函数模板。以上面的代码为例，假如要传的参数是char类型，则会调用函数模板，因为普通函数需要隐式转换才可以使用参数。
+
+//模板的局限性
+//对比两个数据大小的函数模板，不能比较结构体类型。但是可以用具体化的模板解决
+//struct MyStruct
+//{
+//	int age;
+//};
+//template<class T>
+//void t(T a)
+//{
+//
+//}
+//template<> void t(MyStruct a)//相当于扩展了函数模板的功能，用于处理结构体的特殊情况
+//{
+//
+//}
+//
+//int main()
+//{
+//	return 0;
+//}
+
+
+//类模板
+//#include<string>
+//template<class NameType, class AgeType>
+//class P
+//{
+//public:
+//	P(NameType name,AgeType age) {
+//		this->m_Age = age;
+//		this->m_Name = name;
+//	}
+//	NameType m_Name;
+//	AgeType m_Age;
+//};
+//int main()
+//{
+//	P<string,int> a("asda", 4);
+//	return 0;
+//	system("pause");
+//
+//}
+
+
+//类模板和函数模板的区别
+//1.类模板没有自动类型推导的使用方式,最新版本支持
+//2.类模板在模板参数中可以有默认参数，函数模板最新版本支持
+
+
+
+//类模板中成员函数创建时机
+//普通类中的成员函数在一开始就可以创建
+//类模板中的成员函数在调用时才创建
+
+
+//类模板对象做函数参数
+//
+//
+//#include<string>
+//template<class T,class T1>
+//class P {
+//
+//public:
+//	P(T n, T1 a)
+//	{
+//		this->m_Age = a;
+//		this->m_Name = n;
+//	}
+//	T m_Name;
+//	T1 m_Age;
+//
+//};
+////1.指定传入的类型 --直接显示对象的数据类型
+//void t1(P<string,int>&p) {
+//	cout << p.m_Age << p.m_Name;
+//}
+//void test1() {
+//
+//	P<string, int> p("1",1);
+//	t1(p);
+//}
+//
+////2.参数模板化   --将对象中的参数变为模板进行传递
+//template<class T,class T1>
+//void t2(P<T, T1>& p)
+//{
+//	cout << p.m_Age << p.m_Name;
+//}
+//void test2()
+//{
+//	P<string, int> p("2", 2);
+//	t2(p);
+//}
+//
+////3.整个类模板化   --将这个对象类型模板化进行传递
+//template<class T>
+//void t3(T & p)
+//{
+//	cout << p.m_Age << p.m_Name;
+//}
+//
+//void test3() {
+//	P<string, int> p("3", 3);
+//	t3(p);
+//}
+//int main()
+//{
+//	test1();
+//	test2();
+//	test3();
+//	return 0;
+//	system("pause");
+//}
+
+
+//类模板与继承,父类是模板，子类在继承中必须指定继承的类型
+
+//template<class T>
+//class P {
+//public:
+//	T a;
+//    
+//};
+//
+//class p1 :public P<int> {//将父类中继承的类型定为int
+//
+//
+//};
+//template<class T,class T2>//T2用于指定从父类中继承的类型
+//class p2:public P<T2>{
+//
+//	T a1;
+//};
+
+
+//类模板成员函数的类外实现
+//
+//template<class T>
+//class MyClass
+//{
+//public:
+//	T a;
+//	MyClass(T A);
+//	
+//
+//private:
+//
+//};
+////构造函数类外实现
+//template<class T>
+//MyClass<T>::MyClass(T A)
+//{
+//	this->a = A;
+//}
+
+//类模板分文件编写 //以及解决无法调用类模板的方法
+//template<class T>
+//class Person {
+//public:
+//
+//	Person(T b);
+//	T a;
+//
+//};
+//template<class T>
+//Person<T>::Person(T b)
+//{
+//
+//
+//}
+
+//#include"person.cpp"//第一种解决办法，包含cpp文件，让主函数得到函数实现的信息
+//第二种解决方法，将.h和.cpp中的内容写在一起，将后缀名改为.hpp
+//#include"person.hpp"
+//int main() {
+//
+//	Person<string> p("a");
+//	return 0;
+//	system("pause");
+//
+//}
+
+
+////类模板与友元
+//#include<string>
+//
+//template<class T>
+//class P;
+////类外实现
+//template<class T>
+// void PP(P<T> p)
+//{
+//	cout << p.b;
+//}
+//
+//
+//template<class T>
+//class P {
+//
+//public:
+//	P(T a)
+//	{
+//		this->b = a;
+//	}
+//	
+//	//全局函数，类内实现
+//	friend void Person(P<T> p)
+//	{
+//		cout << p.b;
+//	}
+//	//类外实现,需要让编译器提前知道他的存在
+//	friend void PP<>(P<T> p);
+//private:
+//	T b;
+//};
+//void t() {
+//	P<string> p("快乐");
+//	//Person(p);
+//	PP(p);
+//}
+//
+//int main()
+//{
+//	t();
+//	
+//	return 0;
+//	system("pause");
+//}
+
+
+//STL
+//STL分为六大组件，分别是容器，算法，迭代器，仿函数，适配器，空间配置器。
+
+//容器：将一些广泛运用的数据结构实现出来：数组，链表，队列，集合等
+//容器分为序列式容器：强调值的排序，序列式容器中的每个元素均有固定的位置
+//关联式容器：二叉树结构，各元素没有严格的物理上的顺序关系
+
+//算法：问题之解法
+//分为质变算法：是指运算过程期间会更改区间内的元素的内容，例如拷贝，替换，删除等等.
+//和非质变算法：与质变算法相反
+
+//迭代器：容器与算法之间的粘合剂。常用的是双向迭代器和随机访问迭代器
+
+
+#include <vector>
+#include<algorithm>
+void p(int val) {
+	cout<<val<<endl;
+}
+void test()
+{
+	vector<int> v;//创建vector容器
+	//向容器中插入数据
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	////通过迭代器访问容器中的元素
+	//vector<int>::iterator itBegin = v.begin();//起始迭代器
+	//vector<int>::iterator itEnd = v.end();//结束迭代器
+	////第一种遍历方式
+	//while (itBegin!=itEnd)
+	//{
+	//	cout << *itBegin << endl;
+	//	itBegin++;
+	//}
+	//第二种遍历方式
+	for (vector<int>::iterator itBegin = v.begin() ;  itBegin!= v.end(); itBegin++)
+	{
+		cout << *itBegin << endl;
+	}
+	//第三种遍历方式
+	for_each(v.begin(), v.end(),p);
+}
+
+int main()
+{
+	test();
+
+	return 0;
+
+}
