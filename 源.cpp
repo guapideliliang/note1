@@ -1508,3 +1508,140 @@ using namespace std;
 //本质上是一个类，和char*的区别，char*是指针，string是一个类，类内封装了char*，管理这个字符串，是一个char*型的容器
 //封装了很多方便的方法
 
+//string的构造函数
+//string()创建一个空字符串
+//string(const char* s)使用字符串s初始化
+//string(const string& str);使用一个string对象初始化另一个string对象
+//string(int n,char c);使用n个字符c初始化
+//#include<string>
+//void test()
+//{
+//	string s1;
+//	const char* str = "hello world";
+//	string s2(str);
+//	cout << s2 << endl;
+//	string s3(s2);
+//	string s4('a', 10);
+//}
+//
+//int main()
+//{
+//	test();
+//
+//	return 0;
+//
+//}
+
+//string 赋值操作
+
+//void test()
+//{
+//	string str1 = "hello world";
+//	cout << str1 << endl;
+//
+//	string str2 = str1;
+//	cout << str2 << endl;
+// 
+//	//不能直接string str3 = 'a',会报错，大概是没有对应的构造函数
+//	string str3;
+//	str3 = 'a';
+//	cout << str3 << endl;
+// 
+//	string str4;
+//	str4.assign("asdasd");
+//	cout << str4 << endl;
+// 
+//	string str5;
+//	str5.assign("aabbccdd", 5);//前n个字符
+//	cout << str5 << endl;
+// 
+//	string str6;
+//	str6.assign(str5);
+//	cout << str6 << endl;
+// 
+//	string str7;
+//	str7.assign(10, 'w');
+//	cout << str7 << endl;
+//}
+//
+//int main()
+//{
+//	test();
+//	return 0;
+//}
+
+
+//string字符串拼接
+
+//void test() {
+//	string str1 = "我";//运算符重载
+//	str1 += "爱玩游戏";
+//	string str2 = "Lol dnf";
+//		str1 += str2;
+//	cout << str1 << endl;
+//
+//	string str3 = "I";
+//	str3.append(" love");
+//		cout << str3 << endl;
+//   str3.append("game abcde", 4);
+//      cout << str3 << endl;
+//
+//	  str3.append(str2,3,3);//截取对应位置，第二个参数为开始位置。第三个参数为截取个数
+//	  cout <<  str3 << endl;
+//}
+//
+//int main() {
+//
+//	test();
+//	return 0;
+//}
+
+//string查找和替换
+//int find(const string& str, int pos = 0) const; //查找str第一次出现位置,从pos开始查找
+//int find(const char* s, int pos = 0) const; //查找s第一次出现位置,从pos开始查找
+//int find(const char* s, int pos, int n) const; //从pos位置查找s的前n个字符第一次位置
+//int find(const char c, int pos = 0) const; //查找字符c第一次出现位置
+//int rfind(const string& str, int pos = npos) const; //查找str最后一次位置,从pos开始查找
+//int rfind(const char* s, int pos = npos) const; //查找s最后一次出现位置,从pos开始查找
+//int rfind(const char* s, int pos, int n) const; //从pos查找s的前n个字符最后一次位置
+//int rfind(const char c, int pos = 0) const; //查找字符c最后一次出现位置
+//string& replace(int pos, int n, const string& str); //替换从pos开始n个字符为字符串str
+//string& replace(int pos, int n, const char* s); //替换从pos开始的n个字符为字符串s
+//void test() {
+//	string str1 = "abcdefghde";
+//	//查找
+//	int pos = str1.find("de");//不存在则返回-1，存在则返回下标
+//	cout << pos << endl;
+//	cout << str1.rfind("de") << endl;
+//	cout << str1.find("df", 7, 1) << endl;
+//
+//}
+//void test2() {
+//	string str1 = "abcdefghde";
+//	str1.replace(1, 3, "1111");//从一号位置起3个字符替换为1111
+//	cout << str1 << endl;
+//
+//}
+//
+//int main()
+//{
+//	test2();
+//
+//	//test();
+//	return 0;
+//	 }
+
+
+//字符串比较
+
+//void test()
+//{
+//	string str1 = "hello";
+//	string str2 = "hello";
+//	if (str1.compare(str2)==0)//相等返回0,一遇到不同的(1个字母)字母就返回，如果str1>str2返回1，反之返回-1
+//	{
+//
+//	}
+}
+
+
