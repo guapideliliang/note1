@@ -1642,6 +1642,296 @@ using namespace std;
 //	{
 //
 //	}
+//}
+
+
+//string字符存取
+
+//void test()
+//{
+//	string str = "hello";
+//	//通过[]访问单个字符。
+//	for (int i = 0; i < str.size(); i++) {
+//		cout << str[i] << " ";
+//
+//	}
+//	//改变单个字符,也可以用at进行访问修改
+//	str[0] = 'p';
+//	cout << endl;
+//	//通过at方式访问单个字符。
+//	for (int i = 0; i < str.size(); i++) {
+//		cout << str.at(i) << " ";
+//
+//	}
+//	cout << endl;
+//
+//}
+//
+//int main() {
+//	test();
+//
+//	system("pause");
+//	return 0;
+//}
+
+//string插入和删除
+
+//string& insert(int pos, const char* s); //插入字符串
+//string& insert(int pos, const string& str); //插入字符串
+//string& insert(int pos, int n, char c); //在指定位置插入n个字符c
+//string& erase(int pos, int n = npos); //删除从Pos开始的n个字符
+
+
+//void test()
+//{
+//	string str = "hello";
+//	str.insert(1, "111");
+//
+//	cout << str << endl;
+//	str.erase(1, 3);
+//	cout << str << endl;
+//	str.insert(1, 4, 'c');
+//	cout << str << endl;
+//
+//}
+//
+//int main() {
+//	test();
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+//string子串
+
+//string substr(int pos = 0, int n = npos) const; //返回由pos开始的n个字符组成的字符串
+
+
+//void test()
+//{
+//	string str = "abcdef";
+//	string subStr = str.substr(1, 3);
+//	cout << subStr << endl;
+//
+//	//应用场景，获取@前面的用户信息
+//	string email = "hello@sina.com";
+//	int pos = email.find("@");
+//	string username = email.substr(0, pos);
+//	cout << "username: " << username << endl; 
+//
+//}
+//int main() {
+//	system("pause");
+//	test();
+//	return 0;
+//}
+#include<vector>
+//vector容器，动态的数组，单端数组
+//构造函数
+//vector<T> v; //采用模板实现类实现，默认构造函数
+//vector(v.begin(), v.end()); //将v[begin(), end())区间中的元素拷贝给本身。
+//vector(n, elem); //构造函数将n个elem拷贝给本身。
+//vector(const vector& vec); //拷贝构造函数。
+// 
+// 
+//void print(vector<int> v1) 
+//{
+//	for (vector<int> ::iterator it = v1.begin(); it != v1.end(); it++)
+//	{
+//		cout << *it;
+//	}
+//	cout << endl;
+//}
+//
+//
+//void test()
+//{
+//	vector<int>v1;//无参构造
+//	for (int i = 0; i < 10; i++)
+//	{
+//		v1.push_back(i);
+//	}
+//	print(v1);
+//
+//	vector<int>v2(v1.begin(), v1.end());//通过区间方式进行构造
+//	print(v2);
+//
+//	vector<int>v3(10, 100);//10个100
+//	print(v3);
+//
+//	vector<int>v4(v3);//拷贝构造
+//	print(v4);
+//}
+//
+//int main() {
+//	test();
+//
+//	system("pause");
+//	return 0;
+//}
+
+//vector赋值操作
+
+//vector& operator=(const vector& vec); //重载等号操作符
+//assign(beg, end); //将[beg, end)区间中的数据拷贝赋值给本身。
+//assign(n, elem); //将n个elem拷贝赋值给本身。
+//void print(vector<int> v)
+//{
+//	for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
+//	{
+//		cout << *it;
+//	}
+//	cout << endl;
+//}
+//
+//void test()
+//{
+//	vector<int> v1;
+//	for (int i = 0; i < 10; i++)
+//	{
+//		v1.push_back(i);
+//	}
+//	print(v1);
+//	//赋值 operator=
+//	vector<int> v2;
+//	v2 = v1;
+//	print(v2);
+//	vector<int> v3;
+//	v3.assign(v1.begin(), v2.end());//将[beg, end)区间中的数据拷贝赋值给本身。
+//	print(v3);
+//	vector<int> v4;//将n个elem拷贝赋值给本身。
+//	v3.assign(10, 100);
+//}
+//
+//int main() {
+//	test();
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+
+//vector容量和大小的操作
+
+//empty(); //判断容器是否为空.空返回1
+//capacity(); //容器的容量
+//size(); //返回容器中元素的个数
+//resize(int num); //重新指定容器的长度为num，若容器变长，则以默认值填充新位置。
+////如果容器变短，则末尾超出容器长度的元素被删除。
+//resize(int num, elem); //重新指定容器的长度为num，若容器变长，则以elem值填充新位置。
+////如果容器变短，则末尾超出容器长度的元素被删除
+//void print(vector<int> v) {
+//
+//	for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
+//	{
+//		cout << *it;
+//	}
+//	cout << endl;
+//
+//}
+//
+//
+//void test()
+//{
+//	vector<int> v(10, 1);
+//	cout << v.empty() << " " << v.capacity()<<" " << v.size() << endl;
+//	print(v);
+//	v.resize(15, 0);
+//	
+//	cout << v.empty() << " " << v.capacity() << " " << v.size() << endl;
+//	print(v);
+//	v.resize(5);
+//	cout << v.empty() << " " << v.capacity() << " " << v.size() << endl;
+//	print(v);
+//}
+//
+//int main() {
+//	test();
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+//vector插入和删除
+
+//push_back(ele); //尾部插入元素ele
+//pop_back(); //删除最后一个元素
+//insert(const_iterator pos, ele); //迭代器指向位置pos插入元素ele
+//insert(const_iterator pos, int count, ele); //迭代器指向位置pos插入count个元素ele
+//erase(const_iterator pos); //删除迭代器指向的元素
+//erase(const_iterator start, const_iterator end); //删除迭代器从start到end之间的元素
+//clear(); //删除容器中所有元素
+//void print(vector<int> &v)
+//{
+//	for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
+//	{
+//		cout << *it<<" ";
+//
+//
+//	}
+//	cout << endl;
+//}
+//void test()
+//{
+//	vector<int> v(5, 0);
+//	v.push_back(1);
+//	v.push_back(2);
+//	v.push_back(3);
+//	v.push_back(4);
+//	v.insert(v.begin(), 80);
+//	print(v);
+//	v.insert(v.begin(), 5, 7);
+//	print(v);
+//	v.erase(v.begin());
+//	print(v);
+//	v.erase(v.begin() + 1, v.begin() + 3);
+//	print(v);
+//
+//	v.clear();
+//	print(v);
+//
+//}
+//int main() {
+//	test();
+//
+//	system("pause");
+//	return 0;
+//}
+
+
+//vector数据存取
+
+//at(int idx); //返回索引idx所指的数据
+//operator[]; //返回索引idx所指的数据
+//front(); //返回容器中第一个数据元素
+//back(); //返回容器中最后一个数据元素
+
+
+
+void test()
+{
+
 }
 
+int main() {
+	test();
+
+	system("pause");
+	return 0;
+}
+
+//void test()
+//{
+//
+//}
+//
+//int main() {
+//	test();
+//
+//	system("pause");
+//	return 0;
+//}
 

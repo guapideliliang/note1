@@ -1,0 +1,5 @@
+﻿  源.cpp
+LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/PROFILE”规范)
+person.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:REF”规范)
+x64\Debug\源.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+  草稿.vcxproj -> D:\vs2022\code\c++学习笔记\x64\Debug\草稿.exe
